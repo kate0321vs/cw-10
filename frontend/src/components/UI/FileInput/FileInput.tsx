@@ -43,7 +43,7 @@ const FileInput: React.FC<Props> = ({ onChange, name, label, file}) => {
       style={{ display: 'none' }}
       onChange={onFileChange}/>
 
-      <Grid spacing={2} alignItems="center" sx={{ width: '100%' }}>
+      <Grid container spacing={2} alignItems="center" sx={{ width: '100%' }}>
         <Grid  sx={{ flexGrow: 1 }}>
           <TextField value={fileName} label={label} disabled fullWidth/>
         </Grid>

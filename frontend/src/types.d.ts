@@ -10,6 +10,6 @@ export interface INewsMutation {
     title: string;
     description: string;
     image: File | null;
-    date: string;
+    date?: string;
 }
 

@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {selectDeleteNewsLoading} from "../../NewsSlice.ts";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks.ts";
 import {deleteNews, fetchNews} from "../../NewsThunk.ts";
+import dayjs from "dayjs";
 
 interface Props {
     image: string | null;
@@ -40,7 +41,7 @@ const NewsItem: React.FC<Props> = ({image, title, date, id }) => {
                     {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    At {date}
+                    At {dayjs(date).format('DD.MM.YYYY HH:mm')}
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
                     <Button variant="text" size="small" component={NavLink} to={`/news/${id}`}>
