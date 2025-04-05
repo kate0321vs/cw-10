@@ -26,6 +26,9 @@ const FromAddComment: React.FC <Props> = ({id_news}) => {
 
     const onSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (state.message.trim() === "") {
+            alert("Please enter message");
+        };
         await dispatch(createComments(state))
         await dispatch(fetchComments(id_news))
         setState({ ...initialState });
