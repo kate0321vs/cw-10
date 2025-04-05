@@ -24,7 +24,7 @@ const FormItem: React.FC<Props> = ({author, message, id, id_news}) => {
     }
 
     return (
-        <Card variant="outlined" sx={{ maxWidth: 600, margin: "1rem auto" }}>
+        <Card variant="outlined" sx={{ maxWidth: 600, mb: 2 }}>
             <CardContent sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <Typography variant="body1">
                     <strong>{author}</strong>: {message}

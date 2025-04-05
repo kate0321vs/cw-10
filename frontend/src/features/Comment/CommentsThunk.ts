@@ -7,7 +7,7 @@ export const fetchComments = createAsyncThunk<IComment[], string>(
     async (id: string) => {
         const commentsResponse = await axiosApi<IComment[]>(`/comments?newsId=${id}`);
         const comments: IComment[] = commentsResponse.data;
-        return comments;
+        return comments.reverse();
     }
 );
 

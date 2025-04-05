@@ -33,11 +33,11 @@ const FromAddComment: React.FC <Props> = ({id_news}) => {
 
     return (
         <Container>
-            <Typography variant="h4" sx ={{ marginBottom: 2,}} component="h1">
+            <Typography variant="h5" sx ={{ marginBottom: 2, mt: 4}} component="h1">
                 Add comment
             </Typography>
             <form onSubmit={onSubmitForm}>
-                <Grid container direction="column" spacing={2}>
+                <Grid container direction="column" spacing={2} mb={3}>
                     <Grid>
                         <TextField
                             sx = {{width: "50%"}}

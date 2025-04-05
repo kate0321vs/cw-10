@@ -14,7 +14,7 @@ const App = () => {
                     <Route path="/" element={(<News />)}/>
                     <Route path="/news" element={(<News />)}/>
                     <Route path="/add-news" element={(<AddNews/>)}/>
-                    <Route path='/news/:id' element={<FullNews/>}/>
+                    <Route path='/news/:id_news' element={<FullNews/>}/>
                     <Route path="*" element={(<h1>Not page found</h1>)}/>
                 </Routes>
             </Container>

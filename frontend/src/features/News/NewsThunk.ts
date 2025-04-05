@@ -6,7 +6,7 @@ export const fetchNews = createAsyncThunk<INews[]>(
     'news/fetchAll',
     async () => {
         const newsResponse = await axiosApi<INews[]>('/news');
-        const news: INews[] = newsResponse.data;
+        const news: INews[] = newsResponse.data.reverse();
         return news;
     }
 );
