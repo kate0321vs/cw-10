@@ -33,7 +33,7 @@ export const createNews = createAsyncThunk<void, INewsMutation>(
         keys.forEach((key) => {
             const value = INewsMutation[key];
 
-            if (value !== null) {
+            if (value !== null && value !== undefined) {
                 formData.append(key, value);
             }
         })

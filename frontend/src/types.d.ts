@@ -13,3 +13,17 @@ export interface INewsMutation {
     date?: string;
 }
 
+export interface IComment {
+    id: string;
+    author: string;
+    message: string;
+    id_news: string;
+}
+
+export interface ICommentMutation {
+    author: string;
+    message: string;
+    id_news: string;
+}
+
+

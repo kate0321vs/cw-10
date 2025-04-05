@@ -5,6 +5,7 @@ import {selectDeleteNewsLoading} from "../../NewsSlice.ts";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks.ts";
 import {deleteNews, fetchNews} from "../../NewsThunk.ts";
 import dayjs from "dayjs";
+import {toast} from "react-toastify";
 
 interface Props {
     image: string | null;
@@ -18,8 +19,11 @@ const NewsItem: React.FC<Props> = ({image, title, date, id }) => {
     const loading = useAppSelector(selectDeleteNewsLoading);
 
     const onDelete = async (id: string) => {
-        await dispatch(deleteNews(id));
-        await dispatch(fetchNews());
+        if (window.confirm("Are you sure you want to delete this news?")){
+            await dispatch(deleteNews(id));
+            toast.success('News was deleted Successfully!');
+            await dispatch(fetchNews());
+        }
     };
 
     let newsImage = null;
