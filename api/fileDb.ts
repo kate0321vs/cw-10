@@ -1,6 +1,6 @@
 import {promises as fs} from 'fs';
 import {randomUUID} from "node:crypto";
-import {INews, IComment, TNewsWithoutId} from "./type";
+import {INews, IComment, TNewsWithoutId, TCommentWithoutId} from "./type";
 import {existsSync} from "node:fs";
 
 const pathName = './db.json';
@@ -48,6 +48,34 @@ const fileDb = {
         }
 
         data.news = data.news.filter(item => item.id !== id);
+        await this.save();
+        return true;
+    },
+
+    async getComments() {
+        if (data.comments) {
+            return data.comments;
+        } return []
+    },
+
+    async addComment(item: TCommentWithoutId) {
+        const comment = {
+            ...item,
+            id: randomUUID(),
+        }
+        data.comments.push(comment);
+        await this.save();
+        return comment;
+    },
+
+    async deleteComment(id: string) {
+        const deletedComment = data.comments.find(item => item.id === id);
+
+        if (!deletedComment) {
+            return false;
+        }
+
+        data.comments = data.comments.filter(item => item.id !== id);
         await this.save();
         return true;
     },

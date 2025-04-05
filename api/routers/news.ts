@@ -56,9 +56,9 @@ newsRouter.delete('/:id', async (req, res) => {
     const id = req.params.id;
     const response = await fileDb.deleteNews(id);
     if (response) {
-        res.send({message: `Location was successfully deleted.`});
+        res.send({message: `News was successfully deleted.`});
     } else {
-        res.status(404).send({message: `Location cannot be deleted`});
+        res.status(404).send({message: `News cannot be deleted`});
     }
 })
 
