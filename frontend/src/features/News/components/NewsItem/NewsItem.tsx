@@ -1,21 +1,30 @@
-import {Card, CardMedia, Box, Typography, Button} from "@mui/material";
+import {Card, CardMedia, Box, Typography, Button, CircularProgress} from "@mui/material";
 import {baseURL} from "../../../../globalConstants.ts";
+import {NavLink} from "react-router-dom";
+import {selectDeleteNewsLoading} from "../../NewsSlice.ts";
+import {useAppDispatch, useAppSelector} from "../../../../app/hooks.ts";
+import {deleteNews, fetchNews} from "../../NewsThunk.ts";
 
 interface Props {
     image: string | null;
     title: string;
     date: string;
+    id: string;
 }
 
-const NewsItem: React.FC<Props> = ({image, title, date }) => {
+const NewsItem: React.FC<Props> = ({image, title, date, id }) => {
+    const dispatch = useAppDispatch();
+    const loading = useAppSelector(selectDeleteNewsLoading);
+
+    const onDelete = async (id: string) => {
+        await dispatch(deleteNews(id));
+        await dispatch(fetchNews());
+    };
+
     let newsImage = null;
 
     if (image) {
         newsImage = baseURL + '/' + image;
-    }
-
-    const onDelete = () => {
-
     }
 
     return (
@@ -34,11 +43,11 @@ const NewsItem: React.FC<Props> = ({image, title, date }) => {
                     At {date}
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
-                    <Button variant="text" size="small" >
+                    <Button variant="text" size="small" component={NavLink} to={`/news/${id}`}>
                         Read Full Post
                     </Button>
-                    <Button variant="text" size="small" color="error" onClick={onDelete}>
-                        Delete
+                    <Button variant="text" size="small" color="error" onClick={() => onDelete(id)}>
+                        {loading === id ? <CircularProgress /> : 'Delete'}
                     </Button>
                 </Box>
             </Box>

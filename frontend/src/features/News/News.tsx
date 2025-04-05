@@ -5,6 +5,7 @@ import {fetchNews} from "./NewsThunk.ts";
 import {Box, Button, Container, Typography} from "@mui/material";
 import Spinner from "../../components/UI/Spinner/Spinner.tsx";
 import NewsItem from "./components/NewsItem/NewsItem.tsx";
+import {NavLink} from "react-router-dom";
 
 const News = () => {
     const dispatch = useAppDispatch();
@@ -19,12 +20,12 @@ const News = () => {
         <Container maxWidth="md">
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 3, mb: 2 }}>
             <Typography variant="h3" sx={{ my: 3 }}>Posts</Typography>
-                <Button>Add News</Button>
+                <Button component={NavLink} to='/add-news'>Add News</Button>
                 </Box>
             {loading ? <Spinner/>
                 : (news ?
                     news.map((item) => (
-                        <NewsItem key={item.id} title={item.title} image={item.image} date={item.date} />
+                        <NewsItem key={item.id} title={item.title} image={item.image} date={item.date} id={item.id} />
                     )) :
                     <Typography>No notes yet</Typography>)
             }
