@@ -48,7 +48,7 @@ const NewsItem: React.FC<Props> = ({image, title, date, id }) => {
                     At {dayjs(date).format('DD.MM.YYYY HH:mm')}
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
-                    <Button variant="text" size="small" component={NavLink} to={`/news/${id}`}>
+                    <Button variant="text" size="small" component={NavLink} to={`news/${id}`}>
                         Read Full Post
                     </Button>
                     <Button variant="text" size="small" color="error" onClick={() => onDelete(id)}>

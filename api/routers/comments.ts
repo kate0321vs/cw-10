@@ -5,13 +5,13 @@ import {TCommentWithoutId} from "../type";
 const commentsRouter = express.Router();
 
 commentsRouter.get("/", async (req, res) => {
-    const {news_id} = req.query;
+    const {id_news} = req.query;
 
     const comments = await fileDb.getComments();
     let commentsOfNews = comments;
 
-    if (news_id) {
-        commentsOfNews = comments.filter(comment => comment.id_news === news_id)
+    if (id_news) {
+        commentsOfNews = comments.filter(comment => comment.id_news === id_news.toString())
     }
 
     const commentsList = commentsOfNews.map(item => {

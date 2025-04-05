@@ -18,7 +18,7 @@ const FormItem: React.FC<Props> = ({author, message, id, id_news}) => {
     const onDelete = async (id: string) => {
         if (window.confirm("Are you sure you want to delete this comment?")){
             await dispatch(deleteComment(id));
-            toast.success('News was comment Successfully!');
+            toast.success('Comment was deleted Successfully!');
             await dispatch(fetchComments(id_news));
         }
     }
