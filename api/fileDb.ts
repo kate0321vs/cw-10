@@ -48,6 +48,7 @@ const fileDb = {
         }
 
         data.news = data.news.filter(item => item.id !== id);
+        data.comments = data.comments.filter(item => item.id_news !== id);
         await this.save();
         return true;
     },
